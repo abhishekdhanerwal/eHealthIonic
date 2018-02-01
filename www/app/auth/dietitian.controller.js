@@ -21,7 +21,7 @@
                 vm.user.password = vm.newPassword;
                 vm.user.role = USER_ROLE.ROLE_DIETITIAN;
                 console.log(vm.user)
-                principal.signup(vm.user).then(function (response) {
+                principal.signup(vm.user , true).then(function (response) {
                     vm.progress = false;
                     // console.log(response)
                     logger.info('Profile created', 'default');

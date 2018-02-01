@@ -1,0 +1,44 @@
+<ion-view view-title="Dietitians" cache-view="false">
+
+    <ion-content ng-show=" !vm.progress" class="stable-bg" overflow-scroll="true">
+
+        <div class="card" ng-if="vm.dietitianList == undefined || vm.dietitianList.length == 0">
+
+            <div class="row">
+                <div class="col text-center">
+                    <strong class="assertive">Currently there are no new dietitians</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card login-container animated bounceInRight" ng-repeat="obj in vm.dietitianList">
+            <div class="list padding" data-tap-disabled="true">
+
+                <div class = "item item-avatar">
+                    <img ng-if="obj.profilePic != null" ng-src = "{{obj.profilePic}}">
+                    <img ng-if="obj.profilePic == null" src="img/images.png">
+                    <h2><strong>{{obj.name | uppercase}}</strong> <i ng-if="obj.discount>0" class="ion ion-crop pull-right"> {{obj.discount}} % Discount</i></h2>
+                    <h4>{{obj.email}}</h4>
+
+                </div>
+                <div class = "item item-body row">
+                    <div class="col">
+                        <h4> Description: {{obj.description}}</h4>
+                        <h4> Price: &#8377; {{obj.price}}</h4>
+                        <h4 ng-if="obj.discount>0"> Discount Price: &#8377; {{obj.discountPrice}}</h4>
+                        <h4 ng-if="obj.discount>0"> Coupon Code: {{obj.couponCode}}</h4>
+                    </div>
+                </div>
+
+                <div class="button-bar">
+                    <button class="button button-positive button-small button-block button-positive" ng-click="vm.hireDietitian(obj._id)">
+                        Hire
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

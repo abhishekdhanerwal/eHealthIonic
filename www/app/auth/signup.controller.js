@@ -21,7 +21,7 @@
                 vm.user.password = vm.newPassword;
                 vm.user.role = USER_ROLE.ROLE_CONSUMER;
                 console.log(vm.user)
-                principal.signup(vm.user).then(function (response) {
+                principal.signup(vm.user , false).then(function (response) {
                     // vm.progress = false;
                     console.log(response)
                     $state.go('app.basicInfo');

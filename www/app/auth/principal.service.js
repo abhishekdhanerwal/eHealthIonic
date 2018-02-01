@@ -30,10 +30,10 @@
       }
     }
 
-    function signup(user) {
+    function signup(user , flag) {
       var deferred = $q.defer();
 
-      $http.post(__env.dataServerUrl+'/register', user)
+      $http.post(__env.dataServerUrl+'/register?dietitian='+ flag, user)
           .then(
               function (response) {
                 if (response.status == 200) {

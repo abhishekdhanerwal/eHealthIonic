@@ -1,0 +1,46 @@
+<ion-view view-title="Payment" cache-view="false">
+
+    <ion-content ng-show=" !vm.progress" class="stable-bg" overflow-scroll="true">
+
+        <div class="list">
+
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" placeholder="Apply coupon code" ng-model="vm.coupon">
+                </label>
+                <button class="button button-small" ng-click="vm.matchCoupon()">
+                    Submit
+                </button>
+            </div>
+
+        </div>
+
+        <div class="card" ng-if="!vm.showDiscount">
+
+            <div class="row">
+                <div class="col text-center">
+                    <strong class="balanced">PayTm amount &#8377; {{vm.dietitian.price}} to 9999999999</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card" ng-if="vm.showDiscount">
+                <div class="row text-center">
+                    <strong class="balanced">Now you have to PayTm amount &#8377; {{vm.dietitian.discountPrice}} to 9999999999</strong>
+                </div>
+        </div>
+
+    </ion-content>
+
+    <ion-footer-bar align-title="center" class="bar-royal">
+        <div class="buttons">
+            <button class="button"></button>
+        </div>
+        <a ng-click="vm.confirm()"><h1 class="title">Confirm</h1></a>
+        <div class="buttons">
+            <button class="button"></button>
+        </div>
+    </ion-footer-bar>
+
+</ion-view>

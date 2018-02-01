@@ -13,14 +13,15 @@
         activate();
 
         function activate() {
-            principal.signout();
-            $ionicHistory.clearHistory();
-            $ionicHistory.clearCache();
-            $ionicHistory.nextViewOptions({
-                disableBack: true
-            });
+            if(principal.signout()){
+                $ionicHistory.clearHistory();
+                $ionicHistory.clearCache();
+                $ionicHistory.nextViewOptions({
+                    disableBack: true
+                });
 
-            $state.go('startAction');
+                $state.go('auth.login');
+            };
 
         }
 

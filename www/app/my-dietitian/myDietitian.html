@@ -1,0 +1,52 @@
+<ion-view view-title="My Dietitians" cache-view="false">
+
+    <ion-content ng-show=" !vm.progress" class="stable-bg" overflow-scroll="true">
+
+        <div class="card" ng-if="vm.dietitianList == undefined || vm.dietitianList.length == 0">
+
+            <div class="row">
+                <div class="col text-center">
+                    <strong class="assertive">Currently you have not hired any dietitians</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card login-container animated bounceInRight" ng-repeat="obj in vm.dietitianList">
+            <div class="list padding" data-tap-disabled="true">
+
+                <div class = "item item-avatar">
+                    <img ng-if="obj.dietitianId.profilePic != null" ng-src = "{{obj.dietitianId.profilePic}}">
+                    <img ng-if="obj.dietitianId.profilePic == null" src="img/images.png">
+                    <h2><strong>{{obj.dietitianId.name | uppercase}}</strong> <i ng-if="obj.discount>0" class="ion ion-crop pull-right"> {{obj.discount}} % Discount</i></h2>
+                    <h4>{{obj.dietitianId.email}}</h4>
+
+                </div>
+                <div class = "item item-body row">
+                    <div class="col">
+                        <h4> Description: {{obj.dietitianId.description}}</h4>
+                        <h4> Price: &#8377; {{obj.dietitianId.price}}</h4>
+                        <h4 ng-if="obj.dietitianId.discount>0"> Discount Price: &#8377; {{obj.dietitianId.discountPrice}}</h4>
+                        <h4 ng-if="obj.dietitianId.discount>0"> Coupon Code: {{obj.dietitianId.couponCode}}</h4>
+                        <h4 ng-if="obj.active"> Payment Successful On: {{obj.feesSchedule[obj.feesSchedule.length-1].paymentSuccessOn}}</h4>
+                        <h4 ng-if="obj.active"> Last Day of Work: {{obj.feesSchedule[obj.feesSchedule.length-1].lastDateOfWork}}</h4>
+                    </div>
+                </div>
+
+                <div ng-if="!obj.active" class="padding text-center">
+                        <span class="energized"><strong> Request In Progress </strong></span>
+                </div>
+
+                <div ng-if="obj.active" class="button-bar">
+
+                    <button class="button button-positive button-small button-block button-positive" ng-click="vm.hireDietitian(obj._id)">
+                        View Schedule
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
